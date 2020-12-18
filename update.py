@@ -10,12 +10,11 @@ def get_updates():
   FIGMA_FILE_KEY = environ.get('FIGMA_FILE_KEY')
   FIGMA_API_URL = "https://api.figma.com/v1/files/" + FIGMA_FILE_KEY + "/versions"
   FIGMA_API_HEADERS = { 'X-FIGMA-TOKEN': FIGMA_PERSONAL_ACCESS_TOKEN }
-  FIGMA_FILE_NAME = environ.get('FIGMA_FILE_NAME')
+  fileName = environ.get('FIGMA_FILE_NAME')
 
   r = requests.get(url = FIGMA_API_URL, headers = FIGMA_API_HEADERS)
   data = r.json()
   versions = data["versions"]
-  fileName = FIGMA_FILE_NAME
 
   filter_function = lambda x: maya.parse(x['created_at']).datetime().date() == datetime.date.today() and x['description'] is not None and len(x['description']) > 0
   todays_versions = list(filter(filter_function, versions))
