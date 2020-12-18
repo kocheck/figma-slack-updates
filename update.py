@@ -4,7 +4,8 @@ import datetime
 from os import environ
 from dotenv import load_dotenv
 load_dotenv()
-FIGMA_FILE_KEY = environ.get('FIGMA_FILE_KEY')
+FIGMA_FILE_KEY_1 = environ.get('FIGMA_FILE_KEY_1')
+FIGMA_FILE_KEY_2 = environ.get('FIGMA_FILE_KEY_2')
 
 
 def get_updates(key):
@@ -45,4 +46,5 @@ def post_message(message):
   r = requests.post(url = SLACK_API_URL, json = data)
   print(message)
 
-get_updates(FIGMA_FILE_KEY)
+get_updates(FIGMA_FILE_KEY_1)
+get_updates(FIGMA_FILE_KEY_2)
