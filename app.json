@@ -10,6 +10,9 @@
     "FIGMA_FILE_KEY": {
       "description": "The Figma file key to post updates from"
     },
+    "FIGMA_FILE_NAME": {
+      "description": "The Figma file Name to post updates from"
+    },
     "SLACK_TEAM_ID": {
     	"description": "The team ID from the Slack Webhook URL"
     },
