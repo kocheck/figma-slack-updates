@@ -16,6 +16,10 @@ def get_updates():
   data = r.json()
   versions = data["versions"]
 
+  togoIcons = requests.get(url = FIGMA_API_URL, headers = FIGMA_API_HEADERS)
+  iconData = togoIcons.json()
+  iconVersions = iconData["versions"]
+
   filter_function = lambda x: maya.parse(x['created_at']).datetime().date() == datetime.date.today() and x['description'] is not None and len(x['description']) > 0
   todays_versions = list(filter(filter_function, versions))
   if len(todays_versions) > 0:
@@ -41,6 +45,7 @@ def post_message(message):
 
   data = { "text": message }
   r = requests.post(url = SLACK_API_URL, json = data)
+  togoIcons = requests.post(url = SLACK_API_URL, json = iconData)
   print(message)
 
 get_updates()
