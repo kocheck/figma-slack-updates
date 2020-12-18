@@ -9,9 +9,8 @@ FIGMA_FILE_KEY_2 = environ.get('FIGMA_FILE_KEY_2')
 
 
 def get_updates(key):
-  FIGMA_FILE_KEY = key
   FIGMA_PERSONAL_ACCESS_TOKEN = environ.get('FIGMA_PERSONAL_ACCESS_TOKEN')
-  FIGMA_API_URL = "https://api.figma.com/v1/files/" + FIGMA_FILE_KEY + "/versions"
+  FIGMA_API_URL = "https://api.figma.com/v1/files/" + key + "/versions"
   FIGMA_API_HEADERS = { 'X-FIGMA-TOKEN': FIGMA_PERSONAL_ACCESS_TOKEN }
   # FIGMA_FILE_NAME = environ.get('FIGMA_FILE_NAME')
 
