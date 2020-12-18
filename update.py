@@ -9,7 +9,6 @@ def run_updates():
   FIGMA_FILE_KEY_1 = environ.get('FIGMA_FILE_KEY_1')
   FIGMA_FILE_KEY_2 = environ.get('FIGMA_FILE_KEY_2')
 
-
   def get_updates(key):
     FIGMA_PERSONAL_ACCESS_TOKEN = environ.get('FIGMA_PERSONAL_ACCESS_TOKEN')
     FIGMA_API_URL = "https://api.figma.com/v1/files/" + key + "/versions"
@@ -47,8 +46,9 @@ def run_updates():
     r = requests.post(url = SLACK_API_URL, json = data)
     print(message)
 
+  filekeys = [FIGMA_FILE_KEY_1, FIGMA_FILE_KEY_2]
+  for filekeys in filekeys:
+    get_updates(filekeys)
 
-  get_updates(FIGMA_FILE_KEY_1)
-  get_updates(FIGMA_FILE_KEY_2)
 
 run_updates()
